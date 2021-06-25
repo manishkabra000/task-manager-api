@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema({
   ],
 });
 // Methods are accessible on instance => Instance Methods
-userSchema.methods.getPublicProfile = function () {
+userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
 
