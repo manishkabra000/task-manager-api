@@ -50,6 +50,14 @@ const userSchema = new mongoose.Schema({
     },
   ],
 });
+
+// Virtual Attributes: Relationship b/w user and tasks : Not Stored in DB
+userSchema.virtual("tasks", {
+  ref: "Tasks",
+  localField: "_id",
+  foreignField: "owner",
+});
+
 // Methods are accessible on instance => Instance Methods
 userSchema.methods.toJSON = function () {
   const user = this;
